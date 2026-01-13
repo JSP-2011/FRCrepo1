@@ -7,6 +7,7 @@ import java.util.List;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.controller.ProfiledPIDController;
 import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.math.trajectory.TrapezoidProfile.Constraints;
 import edu.wpi.first.wpilibj.DriverStation;
@@ -31,20 +32,20 @@ public class AutoAlign extends Command{
 
     private Pose2d getTargetPose2d() {
         List<Pose2d> accPoses;
-            List<Pose2d> targetPoses = new ArrayList<>();
+        List<Pose2d> targetPoses = new ArrayList<>();
 
-            if (DriverStation.getAlliance().get() == Alliance.Blue) {
-                accPoses = List.copyOf(List.of(RobotConfigConstraints.kAutoAlignPosesBlue)); // add robot config constraints later
-            } else {
-                accPoses = List.copyOf(List.of(RobotConfigConstraints.kAutoAlignPosesRed));
-            }
-            for (int i = isCorrect? 0 : 1; i < accPoses.size(); i += 2) {
-                targetPoses.add(accPoses.get(i));
-                // System.out.println(accPoses.get(i));
-            }
-
-            // return the target pose
-            return RobotState.getInstance().getAdaptivePose().nearest(targetPoses); // todo fix getInstance
+        // if (DriverStation.getAlliance().get() == Alliance.Blue) {
+        //     accPoses = List.copyOf(List.of(RobotConfigConstraints.kAutoAlignPosesBlue)); // add robot config constraints later
+        // } else {
+        //     accPoses = List.copyOf(List.of(RobotConfigConstraints.kAutoAlignPosesRed));
+        // }
+        // for (int i = isCorrect? 0 : 1; i < accPoses.size(); i += 2) {
+        //     targetPoses.add(accPoses.get(i));
+            // System.out.println(accPoses.get(i));
+        // }
+        
+        Rotation2d randomRotation = Rotation2d.fromDegrees(Math.random() * 360);
+        return new Pose2d ((Math.random() * 12.0) + 2.0, (Math.random() * 6.0) + 1.0, randomRotation);
     }
 
 
