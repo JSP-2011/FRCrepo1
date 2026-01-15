@@ -79,6 +79,12 @@ public class SwerveSubsystem extends SubsystemBase
     return getInstance(null);
   }
 
+
+  // temp get pose command
+  public Pose2d getPose() {
+    return RobotPose.getInstance().getAdaptivePose();
+  }
+
   public static SwerveSubsystem getInstance(OdometryConsumer consumer) {
     if (m_instance == null) {
       m_instance = new SwerveSubsystem(consumer);

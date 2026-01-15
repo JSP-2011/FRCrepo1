@@ -8,6 +8,10 @@ import static edu.wpi.first.units.Units.Hertz;
 
 import com.ctre.phoenix6.CANBus;
 import com.pathplanner.lib.config.RobotConfig;
+
+import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.math.geometry.Rotation3d;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.units.measure.Frequency;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
@@ -78,39 +82,12 @@ public final class Constants {
     public static final double kDriverControllerRotationalControlJoystickDeadzone = 0.05;
   }
 
-  public static class SwerveConstants {
-    public static final double kWheelDiameterMeters = Units.inchesToMeters(2.195 * 2.0);
-    public static final double kTrackWidth = Units.inchesToMeters(22.75);
-    public static final double kWheelBase = Units.inchesToMeters(22.75);
-
-    public static MotorConfiguration kDriveMotorConfiguration = new MotorConfiguration();
-
-    static {
-      kDriveMotorConfiguration.gearRatio = SwerveUtil.kSDSL3GearRatio;
-      kDriveMotorConfiguration.idleState = IdleState.kBrake;
-      kDriveMotorConfiguration.mode = MotorMode.kFlywheel;
-      kDriveMotorConfiguration.withFOC = true;
-
-      kDriveMotorConfiguration.currentLimit = 80;
-      kDriveMotorConfiguration.finalDiameterMeters = kWheelDiameterMeters;
-
-      kDriveMotorConfiguration.maxVelocity =
-          kDriveMotorConfiguration.getStandardMaxVelocity(MotorUtil.kKrakenX60FOC_MaxRPM);
-      kDriveMotorConfiguration.maxAcceleration = kDriveMotorConfiguration.maxVelocity * 2.0;
-
-      kDriveMotorConfiguration.kP = 70.789; // 2.64 , 30.64
-      // kDriveMotorConfiguration.kV = 0.75;
-      kDriveMotorConfiguration.kA = 6.0;
-      kDriveMotorConfiguration.kS = 0.5;
-      kDriveMotorConfiguration.altV = kDriveMotorConfiguration.maxVelocity;
-      kDriveMotorConfiguration.altA = kDriveMotorConfiguration.maxAcceleration;
-
-    }
-
-    public static final double kAutoAlignRotationalKp = 0.2; // 0.09
-    public static final double kAutoAlignRotationalKd = 0.02; // 0.02
-    public static final double kAutoAlignTranslationKp = 2.0; // 5.0 , 2.7
-    public static final double kAutoAlignTranslationKd = 0.2; // 0.9
-    public static final double kAutoAlignServoTranslationalKp = 1.0;
+  public static class SwerveConstants { // temp testing constants
+    public static final double kDDistance = 1.0;
+    public static final double kDRotation = 1.0;
+    public static final double kDistanceTolerance = 0.05;
+    public static final double kRotationTolerance = Math.toRadians(2);
+    
+    public static final Pose2d kTargetPose = new Pose2d(3.0, 3.0, new Rotation2d(Math.toRadians(90)));
   }
 }
