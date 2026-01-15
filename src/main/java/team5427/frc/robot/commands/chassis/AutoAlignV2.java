@@ -24,8 +24,8 @@ public class AutoAlignV2 extends Command {
         this.swerveSubsystem = swerveSubsystem;
         this.targetPose = SwerveConstants.kTargetPose;
 
-        distanceController = new PIDController(SwerveConstants.kPDistance, 0.0, SwerveConstants.kPDistance);
-        rotationalController = new PIDController(SwerveConstants.kPRotation, 0.0, SwerveConstants.kPRotation);
+        distanceController = new PIDController(SwerveConstants.kDDistance, 0.0, SwerveConstants.kDDistance);
+        rotationalController = new PIDController(SwerveConstants.kDRotation, 0.0, SwerveConstants.kDRotation);
 
         rotationalController.enableContinuousInput(-Math.PI, Math.PI);
         
