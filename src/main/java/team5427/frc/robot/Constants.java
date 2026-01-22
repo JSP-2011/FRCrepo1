@@ -84,7 +84,7 @@ public final class Constants {
 
   public static class SwerveConstants { // temp testing constants
     public static final double kDDistance = 1.0;
-    public static final double kDRotation = 1.0;
+    public static final double kDRotation = 0.2;
     public static final double kDistanceTolerance = 0.05;
     public static final double kRotationTolerance = Math.toRadians(2);
     
